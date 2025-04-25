@@ -148,20 +148,39 @@ plt.xlabel("Continent", fontsize=12)
 plt.ylabel("Total Cases per Million", fontsize=12)
 #plt.show()
 
-#Outlier Detection
+# #Outlier Detection
 
-Q1 = data["new_cases"].quantile(0.25)
-Q3 = data["new_cases"].quantile(0.75)
-IQR = Q3 - Q1
-outliers = data[(data["new_cases"] > (Q3 + 1.5 * IQR)) | (data["new_cases"] < (Q1 - 1.5 * IQR))]
-print(f"Number of outliers in new cases: {len(outliers)}")
-plt.figure(figsize=(10, 6))
-sns.boxplot(x="continent", y="new_cases", legend=False, hue="continent",  data=data, palette="pastel")
-plt.title("Boxplot of New Cases by Continent (Outlier Detection)", fontsize=14)
+# Q1 = data["new_cases"].quantile(0.25)
+# Q3 = data["new_cases"].quantile(0.75)
+# IQR = Q3 - Q1
+# outliers = data[(data["new_cases"] > (Q3 + 1.5 * IQR)) | (data["new_cases"] < (Q1 - 1.5 * IQR))]
+# print(f"Number of outliers in new cases: {len(outliers)}")
+# plt.figure(figsize=(10, 6))
+# sns.boxplot(x="continent", y="new_cases", legend=False, hue="continent",  data=data, palette="pastel")
+# plt.title("Boxplot of New Cases by Continent (Outlier Detection)", fontsize=14)
+# plt.xlabel("Continent", fontsize=12)
+# plt.ylabel("New Cases", fontsize=12)
+# plt.yscale("log")
+# #plt.show()
+
+# Improved Boxplot of New Cases by Continent (with log scale, better style)
+plt.figure(figsize=(12, 7))
+sns.boxplot(
+    x="continent",
+    y="new_cases",
+    data=data,
+    palette="Set3",
+    linewidth=2.5,
+    fliersize=4,
+    boxprops=dict(alpha=0.8)
+)
+
+plt.yscale("log")  # Log scale for better visualization of extreme values
+plt.title("Boxplot of New COVID-19 Cases by Continent", fontsize=16)
 plt.xlabel("Continent", fontsize=12)
-plt.ylabel("New Cases", fontsize=12)
-plt.yscale("log")
-#plt.show()
+plt.ylabel("New Cases (Log Scale)", fontsize=12)
+plt.grid(True, which='major', linestyle='--', linewidth=0.5, alpha=0.7)
+
 
 #Pairplot
 pairplot_metrics = ["new_cases_per_million", "new_deaths_per_million", 
