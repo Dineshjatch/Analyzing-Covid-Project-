@@ -42,7 +42,7 @@ plt.xlabel("Date", fontsize=12)
 plt.ylabel("New Cases per Million", fontsize=12)
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.7)
-plt.show()
+#plt.show()
 
 
 plt.figure(figsize=(14, 8))
@@ -54,7 +54,7 @@ plt.xlabel("Date", fontsize=12)
 plt.ylabel("Total Cases per Million", fontsize=12)
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.7)
-plt.show()
+#plt.show()
 
 
 plt.figure(figsize=(14, 8))
@@ -66,7 +66,7 @@ plt.xlabel("Date", fontsize=12)
 plt.ylabel("New Deaths per Million", fontsize=12)
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.7)
-plt.show()
+#plt.show()
 
 
 plt.figure(figsize=(14, 8))
@@ -78,7 +78,7 @@ plt.xlabel("Date", fontsize=12)
 plt.ylabel("Total Deaths per Million", fontsize=12)
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.7)
-plt.show()
+#plt.show()
 
 
 india_data = data[data["location"] == "India"]
@@ -92,7 +92,7 @@ sns.scatterplot(x="total_vaccinations_per_hundred", y="new_deaths_per_million", 
 plt.title("Total Vaccinations per Hundred vs. New Deaths per Million in India", fontsize=14)
 plt.xlabel("Total Vaccinations per Hundred", fontsize=12)
 plt.ylabel("New Deaths per Million", fontsize=12)
-plt.show()
+#plt.show()
 
 #Factors Influencing Spread
 factors_data = data[["new_cases_per_million", "new_deaths_per_million", "new_tests", 
@@ -100,7 +100,7 @@ factors_data = data[["new_cases_per_million", "new_deaths_per_million", "new_tes
 plt.figure(figsize=(10, 8))
 sns.heatmap(factors_data.corr(), annot=True, cmap="YlGnBu", fmt=".2f")
 plt.title("Correlation of Factors Influencing COVID-19 Spread", fontsize=14)
-plt.show()
+#plt.show()
 
 #Regional Differences
 continent_data = data.groupby("continent")[["total_cases_per_million", "total_deaths_per_million"]].mean().reset_index()
@@ -109,14 +109,14 @@ sns.barplot(x="continent", y="total_deaths_per_million", hue="continent", data=c
 plt.title("Average Total Deaths per Million by Continent", fontsize=14)
 plt.xlabel("Continent", fontsize=12)
 plt.ylabel("Total Deaths per Million", fontsize=12)
-plt.show()
+#plt.show()
 
 plt.figure(figsize=(12, 6))
 sns.barplot(x="continent", y="total_cases_per_million", hue="continent", data=continent_data, palette="pastel", legend=False)
 plt.title("Average Total Cases per Million by Continent", fontsize=14)
 plt.xlabel("Continent", fontsize=12)
 plt.ylabel("Total Cases per Million", fontsize=12)
-plt.show()
+#plt.show()
 
 #Outlier Detection
 
@@ -131,7 +131,7 @@ plt.title("Boxplot of New Cases by Continent (Outlier Detection)", fontsize=14)
 plt.xlabel("Continent", fontsize=12)
 plt.ylabel("New Cases", fontsize=12)
 plt.yscale("log")
-plt.show()
+#plt.show()
 
 #Pairplot
 pairplot_metrics = ["new_cases_per_million", "new_deaths_per_million", 
