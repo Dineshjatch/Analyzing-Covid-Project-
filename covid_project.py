@@ -96,13 +96,33 @@ plt.legend()
 plt.grid(True, linestyle="--", alpha=0.7)
 
 
-#Vaccination vs Mortality (India)
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x="total_vaccinations_per_hundred", y="new_deaths_per_million", data=india_data, color="purple")
-plt.title("Total Vaccinations per Hundred vs. New Deaths per Million in India", fontsize=14)
+# #Vaccination vs Mortality (India)
+# plt.figure(figsize=(10, 6))
+# sns.scatterplot(x="total_vaccinations_per_hundred", y="new_deaths_per_million", data=india_data, color="purple")
+# plt.title("Total Vaccinations per Hundred vs. New Deaths per Million in India", fontsize=14)
+# plt.xlabel("Total Vaccinations per Hundred", fontsize=12)
+# plt.ylabel("New Deaths per Million", fontsize=12)
+# #plt.show()
+
+# Enhanced Scatter Plot: Vaccination vs Mortality in India
+plt.figure(figsize=(12, 7))
+scatter = sns.scatterplot(
+    x="total_vaccinations_per_hundred",
+    y="new_deaths_per_million",
+    size="stringency_index",               # Point size reflects government restrictions
+    hue="reproduction_rate",              # Color reflects reproduction rate
+    sizes=(20, 200),
+    palette="coolwarm",
+    alpha=0.7,
+    data=india_data
+)
+
+plt.title("Vaccinations vs. New Deaths per Million (India)", fontsize=16)
 plt.xlabel("Total Vaccinations per Hundred", fontsize=12)
 plt.ylabel("New Deaths per Million", fontsize=12)
-#plt.show()
+plt.legend(title="Reproduction Rate / Stringency Index", bbox_to_anchor=(1.05, 1), loc=2)
+plt.grid(True, linestyle="--", alpha=0.5)
+
 
 #Factors Influencing Spread
 factors_data = data[["new_cases_per_million", "new_deaths_per_million", "new_tests", 
