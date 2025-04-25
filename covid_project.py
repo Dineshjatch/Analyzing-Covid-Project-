@@ -84,6 +84,16 @@ plt.grid(True, linestyle="--", alpha=0.7)
 india_data = data[data["location"] == "India"]
 
 
+# Reproduction Rate Over Time
+plt.figure(figsize=(14, 8))
+for country in countries:
+    country_subset = country_data[country_data["location"] == country]
+    plt.plot(country_subset["date"], country_subset["reproduction_rate"], label=country)
+plt.title("Reproduction Rate Over Time by Country", fontsize=14)
+plt.xlabel("Date", fontsize=12)
+plt.ylabel("Reproduction Rate", fontsize=12)
+plt.legend()
+plt.grid(True, linestyle="--", alpha=0.7)
 
 
 #Vaccination vs Mortality (India)
